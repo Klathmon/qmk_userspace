@@ -8,6 +8,11 @@ enum my_keycodes {
     K_MM_SW,            // KVM: hybrid view | main: mac      secondary: windows
     K_S_KBM,            // KVM: swap keyboard and mouse
     KQ_FLSH,            // type out qmk flash command for this keyboard
+                        // audio stuff
+    COINS,
+    MARIOT,
+    MARIOG,
+    DISNEY,
 };
 
 // Keycode Aliases

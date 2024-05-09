@@ -2,6 +2,9 @@
 #ifdef OLED_ENABLE
 #    include "./oled/oled.h"
 #endif
+#ifdef AUDIO_ENABLE
+#    include "./features/audio.h"
+#endif
 
 /* Returns true if the keyboard is in mac mode */
 bool is_mac_mode(void) {
@@ -12,6 +15,12 @@ bool is_mac_mode(void) {
 WEAK bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef OLED_ENABLE
     if (!process_record_oled_handler(keycode, record)) {
+        return false;
+    }
+#endif
+
+#ifdef AUDIO_ENABLE
+    if (!process_record_audio_handler(keycode, record)) {
         return false;
     }
 #endif
