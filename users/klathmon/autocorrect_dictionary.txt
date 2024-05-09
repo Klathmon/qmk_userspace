@@ -1,0 +1,10 @@
+tzhe:   -> the
+tzhat:  -> that
+tzhis:  -> this
+tzhey:  -> they
+tzheir: -> their
+tzhere: -> there
+tzhen:  -> then
+tzhem:  -> them
+tzhose: -> those
+thsi:   -> this

@@ -69,9 +69,9 @@ WEAK bool oled_task_user(void) {
     oled_print_layer_state_string(false);
     oled_print_mode_icon();
 #else
-    oled_print_layer_state_string(true);
-    oled_set_cursor(0, 1);          // move to the second line
-    oled_write(read_logo(), false); // write the logo
+    // oled_print_layer_state_string(true);
+    // oled_set_cursor(0, 1);          // move to the second line
+    // oled_write(read_logo(), false); // write the logo
 
 #endif // MAC_WIN_MODE_ICON
 

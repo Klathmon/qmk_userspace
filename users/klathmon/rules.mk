@@ -1,5 +1,7 @@
 CONSOLE_ENABLE         = no  # Console for debug
 
+AUTOCORRECT_ENABLE     = yes
+
 # Stuff that I want enabled on all of my keyboards
 DYNAMIC_MACRO_ENABLE   = yes # Enable Dynamic Macros
 EXTRAKEY_ENABLE        = yes # Audio control and System control
