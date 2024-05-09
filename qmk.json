@@ -2,6 +2,8 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["lily58/rev1", "klathmon"],
-        ["lily58/light", "klathmonl"]
+        ["lily58/rev1", "klathmon_caterina"],
+        ["lily58/light", "klathmon_light"],
+        ["qkf4", "klathmon"]
     ]
 }
