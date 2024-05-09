@@ -6,6 +6,7 @@
         ["lily58/light", "klathmon_light"],
         ["qkf4", "klathmon"],
         ["planck/rev3", "klathmon"],
-        ["planck/rev3", "steno"]
+        ["planck/rev3", "steno"],
+        ["keebio/bdn9/rev1", "klathmon_macro"]
     ]
 }
