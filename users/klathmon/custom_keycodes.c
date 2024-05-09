@@ -36,7 +36,14 @@ void kbm_swap_kbm(void) {
 
 /** Sends the qmk flash command for this keyboard */
 void send_flash_string(void) {
-    SEND_STRING("qmk flash -j 0 -kb " QMK_KEYBOARD " -km " QMK_KEYMAP SS_TAP(X_ENTER));
+    const bool is_ctrl_cmd_held = get_mods() & (is_mac_mode() ? MOD_MASK_GUI : MOD_MASK_CTRL);
+
+    if (is_ctrl_cmd_held) {
+        unregister_mods(is_mac_mode() ? MOD_MASK_GUI : MOD_MASK_CTRL);
+        SEND_STRING("qmk generate-compilation-database -kb " QMK_KEYBOARD " -km " QMK_KEYMAP SS_TAP(X_ENTER));
+    } else {
+        SEND_STRING("qmk flash -j 0 -kb " QMK_KEYBOARD " -km " QMK_KEYMAP SS_TAP(X_ENTER));
+    }
 }
 
 /** Should be called from the keyboard's process_record_user function */

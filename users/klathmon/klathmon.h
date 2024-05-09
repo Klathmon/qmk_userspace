@@ -3,6 +3,10 @@
 #include "config.h"          // IWYU pragma: keep
 #include "custom_keycodes.h" // IWYU pragma: keep
 
+#ifdef CONSOLE_ENABLE
+#    include "print.h"
+#endif
+
 /** allows a keymap file to optionally overwrite a function defined with this if needed */
 #define WEAK __attribute__((weak))
 
@@ -21,3 +25,11 @@ enum my_layers {
 // clang-format on
 
 bool is_mac_mode(void);
+
+// this makes clangd happy as it doesn't seem to understand that these are defined during compilation
+#ifndef QMK_KEYBOARD
+#    define QMK_KEYBOARD "unknown"
+#endif
+#ifndef QMK_KEYMAP
+#    define QMK_KEYMAP "unknown"
+#endif

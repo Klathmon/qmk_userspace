@@ -31,3 +31,8 @@ endif
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
   SRC += ./features/encoder.c
 endif
+
+ifeq ($(strip $(GSB_GPIO_LEDS_ENABLE)), yes)
+  OPT_DEFS += -DGSB_GPIO_LEDS_ENABLE
+  SRC += ./features/status_leds.c
+endif
