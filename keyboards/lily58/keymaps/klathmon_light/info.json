@@ -1,0 +1,13 @@
+{
+    "usb": {
+        "max_power": 1000
+    },
+    "ws2812": {
+        "pin": "D3"
+    },
+    "rgblight": {
+        "led_count": 70,
+        "max_brightness": 32,
+        "split_count": [35, 35]
+    }
+}
