@@ -65,14 +65,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     //                                                         |                                                       //
     [_HYPR_WIN] = LAYOUT_ortho_5x12(
-        KC_CAPS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS,     QK_MAKE, KC_TRNS, KC_TRNS, K_S_KBM, K_WIN,   K_MAC,
+        KC_CAPS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS,     QK_MAKE, KC_TRNS, KC_TRNS, K_S_KBM, K_MAC,   K_WIN,
         KC_TRNS, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_TRNS,     KC_TRNS, KC_PSCR, KC_BRMD, KC_BRMU, K_MM_SW, K_MW_SM,
         KC_TRNS, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,     M_LOCKW, KC_VOLD, KC_MUTE, KC_VOLU, KC_WBAK, KC_WFWD,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     M_SLEPW, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, M_TGLM,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KQ_FLSH, KC_TRNS, KC_TRNS, KC_TRNS, M_TGLM
     ),
     [_HYPR_MAC] = LAYOUT_ortho_5x12(
-        KC_CAPS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS,     QK_MAKE, KC_TRNS, KC_TRNS, K_S_KBM, K_WIN,   K_MAC,
+        KC_CAPS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS,     QK_MAKE, KC_TRNS, KC_TRNS, K_S_KBM, K_MAC,   K_WIN,
         KC_TRNS, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_TRNS,     KC_TRNS, KC_PSCR, KC_BRMD, KC_BRMU, K_MM_SW, K_MW_SM,
         KC_TRNS, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,     M_LOCKW, KC_VOLD, KC_MUTE, KC_VOLU, M_BAKM,  M_FWDM,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     M_SLEPW, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, M_TGLM,
