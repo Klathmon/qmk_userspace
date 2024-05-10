@@ -67,8 +67,14 @@ void oled_print_boot_message(bool bootloader) {
         oled_set_cursor(0, i);
         if (bootloader) {
             oled_write_P(PSTR("Awaiting New Firmware "), false);
+#ifdef GSB_FLASH_INVERT_ON_KEYPRESS
+            oled_invert(false);
+#endif
         } else {
             oled_write_P(PSTR("Rebooting "), false);
+#ifdef GSB_FLASH_INVERT_ON_KEYPRESS
+            oled_invert(false);
+#endif
         }
     }
 
