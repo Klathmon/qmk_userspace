@@ -25,7 +25,8 @@ endif
 ifeq ($(strip $(OLED_ENABLE)), yes)
   SRC += ./oled/oled.c \
          ./oled/oled_print_funcs.c \
-         ./oled/keylogger.c
+         ./oled/keylogger.c \
+         ./oled/oled_timeout_handler.c
 endif
 
 ifeq ($(strip $(ENCODER_ENABLE)), yes)

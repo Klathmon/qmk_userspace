@@ -1,5 +1,5 @@
-#include "oled_print_funcs.h"
-#include "keylogger.h"
+#include "./oled_print_funcs.h"
+#include "./keylogger.h"
 
 /** Prints the current layer and optionally the OS mode on the top line of the OLED */
 void oled_print_layer_state_string(bool write_os) {

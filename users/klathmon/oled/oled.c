@@ -1,6 +1,7 @@
-#include "oled.h"
-#include "oled_print_funcs.h"
-#include "keylogger.h"
+#include "./oled.h"
+#include "./oled_print_funcs.h"
+#include "./keylogger.h"
+#include "./oled_timeout_handler.h"
 
 #ifdef DYNAMIC_MACRO_ENABLE
 bool is_recording_macro = false;
@@ -58,6 +59,12 @@ WEAK oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
 /** The actual update loop for the OLED */
 WEAK bool oled_task_user(void) {
+#ifdef OLED_TIMEOUT
+    if (!oled_handle_timeout()) {
+        return false;
+    }
+#endif
+
 #ifdef DYNAMIC_MACRO_ENABLE
     if (is_recording_macro) {
         oled_print_recording_macro();

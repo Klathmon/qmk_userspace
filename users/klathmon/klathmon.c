@@ -6,9 +6,21 @@
 #    include "./features/audio.h"
 #endif
 
+#ifdef CONSOLE_ENABLE
+static bool last_is_mac_mode = false;
+#endif
+
 /* Returns true if the keyboard is in mac mode */
 bool is_mac_mode(void) {
-    return IS_LAYER_ON(_MAIN_MAC) || IS_LAYER_ON(_MVMT_MAC) || IS_LAYER_ON(_HYPR_MAC);
+    bool on_mac_layer = IS_LAYER_ON(_MAIN_MAC) || IS_LAYER_ON(_MVMT_MAC) || IS_LAYER_ON(_HYPR_MAC);
+#ifdef CONSOLE_ENABLE
+    if (last_is_mac_mode != on_mac_layer) {
+        // Log the switch of mac mode for debugging
+        uprintf("Is mac mode: %s\n", on_mac_layer ? "true" : "false");
+        last_is_mac_mode = on_mac_layer;
+    }
+#endif
+    return on_mac_layer;
 }
 
 /** The default process_record_user, i'm going to try and get this to work the same on all my boards */
