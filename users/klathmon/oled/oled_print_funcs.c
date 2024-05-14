@@ -37,19 +37,19 @@ void oled_print_layer_state_string(bool write_os) {
     }
 }
 
-#ifdef MAC_WIN_MODE_ICON
+#ifdef GSB_MAC_WIN_MODE_ICON
 // the logos itself pulled from the font image
 static const char PROGMEM macWinLogo[][2][3] = {{{0x95, 0x96, 0}, {0xb5, 0xb6, 0}}, {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}}};
 
 // for some reason using this causes the OLED timeout to break and i'm not sure why...
 void oled_print_mode_icon(void) {
-    oled_set_cursor(MAC_WIN_MODE_ICON_COL, MAC_WIN_MODE_ICON_ROW);
+    oled_set_cursor(GSB_MAC_WIN_MODE_ICON_COL, GSB_MAC_WIN_MODE_ICON_ROW);
     oled_write_P(macWinLogo[(int)!is_mac_mode()][0], false);
 
-    oled_set_cursor(MAC_WIN_MODE_ICON_COL, MAC_WIN_MODE_ICON_ROW + 1);
+    oled_set_cursor(GSB_MAC_WIN_MODE_ICON_COL, GSB_MAC_WIN_MODE_ICON_ROW + 1);
     oled_write_P(macWinLogo[(int)!is_mac_mode()][1], false);
 }
-#endif // MAC_WIN_MODE_ICON
+#endif // GSB_MAC_WIN_MODE_ICON
 
 #ifdef DYNAMIC_MACRO_ENABLE
 void oled_print_recording_macro(void) {

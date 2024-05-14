@@ -2,6 +2,7 @@
 #include "./oled_print_funcs.h"
 #include "./keylogger.h"
 #include "./oled_timeout_handler.h"
+#include "./customized_font_reader.h"
 
 #ifdef DYNAMIC_MACRO_ENABLE
 bool is_recording_macro = false;
@@ -72,15 +73,17 @@ WEAK bool oled_task_user(void) {
     }
 #endif // DYNAMIC_MACRO_ENABLE
 
-#ifdef MAC_WIN_MODE_ICON
+#ifdef GSB_MAC_WIN_MODE_ICON
     oled_print_layer_state_string(false);
+    oled_set_cursor(0, 2);              // move to the third line
+    oled_write_P(read_logo_P(), false); // write the logo first (leaving room for the icon)
     oled_print_mode_icon();
 #else
     oled_print_layer_state_string(true);
-    oled_set_cursor(0, 1);          // move to the second line
-    oled_write(read_logo(), false); // write the logo
+    oled_set_cursor(0, 1);              // move to the second line
+    oled_write_P(read_logo_P(), false); // write the logo
 
-#endif // MAC_WIN_MODE_ICON
+#endif // GSB_MAC_WIN_MODE_ICON
 
 #ifdef GSB_FLASH_INVERT_ON_KEYPRESS
     // if enabled, invert the display for a single frame

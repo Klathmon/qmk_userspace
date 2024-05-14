@@ -8,5 +8,3 @@ RGBLIGHT_ENABLE   = no  # Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE = no  # Enable one-hand typing
 ENCODER_ENABLE    = yes # Enable rotary encoder
 OLED_ENABLE       = yes # OLED display
-
-SRC += ./lib/logo_reader.c
