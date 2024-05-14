@@ -44,10 +44,10 @@ static const char PROGMEM macWinLogo[][2][3] = {{{0x95, 0x96, 0}, {0xb5, 0xb6, 0
 // for some reason using this causes the OLED timeout to break and i'm not sure why...
 void oled_print_mode_icon(void) {
     oled_set_cursor(MAC_WIN_MODE_ICON_COL, MAC_WIN_MODE_ICON_ROW);
-    oled_write_P(macWinLogo[(int)is_mac_mode()][0], false);
+    oled_write_P(macWinLogo[(int)!is_mac_mode()][0], false);
 
     oled_set_cursor(MAC_WIN_MODE_ICON_COL, MAC_WIN_MODE_ICON_ROW + 1);
-    oled_write_P(macWinLogo[(int)is_mac_mode()][1], false);
+    oled_write_P(macWinLogo[(int)!is_mac_mode()][1], false);
 }
 #endif // MAC_WIN_MODE_ICON
 
