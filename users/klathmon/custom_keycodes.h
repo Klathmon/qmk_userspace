@@ -8,7 +8,8 @@ enum my_keycodes {
     K_MM_SW,            // KVM: hybrid view | main: mac      secondary: windows
     K_S_KBM,            // KVM: swap keyboard and mouse
     KQ_FLSH,            // type out qmk flash command for this keyboard
-                        // audio stuff
+
+    // audio stuff
     COINS,
     MARIOT,
     MARIOG,
@@ -24,6 +25,7 @@ enum my_keycodes {
 #define M_FWDM LOPT(KC_RGHT)          // Macos forward
 #define M_MVMTW MO(_MVMT_WIN)         // Windows movement layer
 #define M_MVMTM MO(_MVMT_MAC)         // Macos movement layer
+#define M_MSPOT LCTL_T(LGUI(KC_SPC))  // Macos Spotlight/ctrl mod-tap
 #define M_HESCW LT(_HYPR_WIN, KC_ESC) // Windows hyper/escape hybrid
 #define M_HESCM LT(_HYPR_MAC, KC_ESC) // Macos hyper/escape hybrid
 #define M_LWRDW LCTL(KC_LEFT)         // Windows left one word

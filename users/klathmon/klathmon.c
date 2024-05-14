@@ -42,6 +42,13 @@ WEAK bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        // this is dumb, but LCTL_T can't send the LGUI(KC_SPC) keycode, so we have to intercept and do it manually here
+        case LCTL_T(LGUI(KC_SPC)): {
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(LGUI(KC_SPC));
+                return false;
+            }
+        }
         default: {
             return true; // Process all other keycodes normally
         }

@@ -1,4 +1,4 @@
-#include "custom_keycodes.h"
+#include "./custom_keycodes.h"
 
 // Macro Functions
 /** Switches the KVM to Macos */
