@@ -1,13 +1,14 @@
 #pragma once
-#include "klathmon.h" // IWYU pragma: keep
+#include "./klathmon.h" // IWYU pragma: keep
 
 enum my_keycodes {
-    K_WIN = SAFE_RANGE, // KVM: switch to windows PC
-    K_MAC,              // KVM: switch to macbook
-    K_MW_SM,            // KVM: hybrid view | main: windows  secondary: mac
-    K_MM_SW,            // KVM: hybrid view | main: mac      secondary: windows
-    K_S_KBM,            // KVM: swap keyboard and mouse
-    KQ_FLSH,            // type out qmk flash command for this keyboard
+    KQ_FLSH = SAFE_RANGE, // type out qmk flash command for this keyboard
+    KVM_C1,               // KVM: switch to computer 1
+    KVM_C2,               // KVM: switch to computer 2
+    KVM_C3,               // KVM: switch to computer 3
+    K_MW_SM,              // KVM: hybrid view | main: windows  secondary: mac
+    K_MM_SW,              // KVM: hybrid view | main: mac      secondary: windows
+    K_S_KBM,              // KVM: swap keyboard and mouse
 
     // audio stuff
     COINS,
@@ -49,11 +50,15 @@ enum my_keycodes {
 #define M_R_SNA RGB_MODE_SNAKE        // RGB Lighting
 #define M_R_KNI RGB_MODE_KNIGHT       // RGB Lighting
 
+enum {
+    KVM_INPUT_1,
+    KVM_INPUT_2,
+};
+
 // Macro Functions
-void kvm_mac(void);
+void kvm_switch_input(uint8_t kvm_input_number);
 void kvm_hybrid_mmac_swin(void);
 void kvm_hybrid_mwin_smac(void);
-void kvm_win(void);
 void kbm_swap_kbm(void);
 void send_flash_string(void);
 

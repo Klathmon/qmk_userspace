@@ -1,29 +1,29 @@
 #include "./custom_keycodes.h"
 
 // Macro Functions
-/** Switches the KVM to Macos */
-void kvm_mac(void) {
-    layer_move(_MAIN_MAC);
-    SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL) SS_TAP(X_P1), GSB_KVM_TAP_CODE_DELAY);
-    // wait a bit, then slap an escape in there to make sure the macbook is woken up when switching to it
-    wait_ms(500);
-    tap_code(KC_ESC);
-}
-/** Switches the KVM to Windows */
-void kvm_win(void) {
-    layer_move(_MAIN_WIN);
-    SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL) SS_TAP(X_P2), GSB_KVM_TAP_CODE_DELAY);
+void kvm_switch_input(uint8_t kvm_input_number) {
+    SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL), GSB_KVM_TAP_CODE_DELAY);
+    switch (kvm_input_number) {
+        case KVM_INPUT_1:
+            tap_code(KC_P1);
+            layer_move(_MAIN_MAC);
+            break;
+        case KVM_INPUT_2:
+            tap_code(KC_P2);
+            layer_move(_MAIN_WIN);
+            break;
+    }
 }
 
 /** Switches the KVM to main screen Macos, secondary screen Windows */
 void kvm_hybrid_mmac_swin(void) {
-    kvm_mac();
+    kvm_switch_input(KVM_INPUT_1);
     wait_ms(GSB_KVM_TAP_CODE_DELAY);
     SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL) SS_TAP(X_LEFT), GSB_KVM_TAP_CODE_DELAY);
 }
 /** Switches the KVM to main screen Windows, secondary screen Macos */
 void kvm_hybrid_mwin_smac(void) {
-    kvm_win();
+    kvm_switch_input(KVM_INPUT_2);
     wait_ms(GSB_KVM_TAP_CODE_DELAY);
     SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL) SS_TAP(X_LEFT), GSB_KVM_TAP_CODE_DELAY);
 }
@@ -49,14 +49,14 @@ void send_flash_string(void) {
 /** Should be called from the keyboard's process_record_user function */
 bool process_record_custom_keycode_handler(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case K_WIN:
+        case KVM_C2:
             if (record->event.pressed) {
-                kvm_win();
+                kvm_switch_input(KVM_INPUT_2);
             }
             return false;
-        case K_MAC:
+        case KVM_C1:
             if (record->event.pressed) {
-                kvm_mac();
+                kvm_switch_input(KVM_INPUT_1);
             }
             return false;
         case K_MW_SM:

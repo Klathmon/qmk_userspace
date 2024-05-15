@@ -1,4 +1,4 @@
 #pragma once
 
-// #define USE_I2C
-#define EE_HANDS
+/* Select hand configuration */
+#define MASTER_LEFT

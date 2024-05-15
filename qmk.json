@@ -2,12 +2,14 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["lily58/rev1", "klathmon"],
-        ["lily58/rev1", "klathmon_caterina"],
+        ["lily58/rev1", "klathmon_right"],
         ["lily58/light", "klathmon_light"],
+        ["lily58/light", "klathmon_light_right"],
         ["qkf4", "klathmon"],
         ["planck/rev3", "klathmon"],
         ["planck/rev3", "steno"],
         ["keebio/bdn9/rev1", "klathmon_macro"],
-        ["keebio/iris/rev2", "klathmon"]
+        ["keebio/iris/rev2", "klathmon"],
+        ["keebio/iris/rev2", "klathmon_right"]
     ]
 }

@@ -1,4 +1,4 @@
-#include "klathmon.h"
+#include "./klathmon.h"
 #ifdef OLED_ENABLE
 #    include "./oled/oled.h"
 #endif
