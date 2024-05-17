@@ -42,3 +42,10 @@ ifeq ($(strip $(GSB_GPIO_LEDS_ENABLE)), yes)
   OPT_DEFS += -DGSB_GPIO_LEDS_ENABLE
   SRC += ./features/status_leds.c
 endif
+
+
+ifeq ($(strip $(BOOTLOADER)), atmel-dfu)
+  OPT_DEFS += -DGSB_ATMEL_DFU_BOOTLOADER
+else ifeq ($(strip $(BOOTLOADER)), caterina)
+  OPT_DEFS += -DGSB_CATERINA_BOOTLOADER
+endif

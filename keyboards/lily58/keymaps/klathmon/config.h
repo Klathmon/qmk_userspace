@@ -1,9 +1,7 @@
 #pragma once
 
 /* Select hand configuration */
-#define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
+#define SPLIT_USB_DETECT
 
 // Encoders
 #ifndef ENCODERS_PAD_A

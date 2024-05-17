@@ -42,7 +42,26 @@ void send_flash_string(void) {
         unregister_mods(is_mac_mode() ? MOD_MASK_GUI : MOD_MASK_CTRL);
         SEND_STRING("qmk generate-compilation-database -kb " QMK_KEYBOARD " -km " QMK_KEYMAP SS_TAP(X_ENTER));
     } else {
-        SEND_STRING("qmk flash -j 0 -kb " QMK_KEYBOARD " -km " QMK_KEYMAP SS_TAP(X_ENTER));
+        SEND_STRING("qmk flash -j 0 -kb " QMK_KEYBOARD " -km " QMK_KEYMAP);
+#ifdef EE_HANDS
+// if we are on a split keyboard with ee_hands, we also want to flash the correct handedness bootloader command to flash the correct EEPROM
+#    ifdef GSB_ATMEL_DFU_BOOTLOADER
+        if (isLeftHand) {
+            SEND_STRING(" -bl dfu-split-left");
+        } else {
+            SEND_STRING(" -bl dfu-split-right");
+        }
+#    else
+#        ifdef GSB_CATERINA_BOOTLOADER
+        if (isLeftHand) {
+            SEND_STRING(" -bl avrdude-split-left");
+        } else {
+            SEND_STRING(" -bl avrdude-split-right");
+        }
+#        endif
+#    endif
+#endif
+        SEND_STRING(SS_TAP(X_ENTER));
     }
 }
 
