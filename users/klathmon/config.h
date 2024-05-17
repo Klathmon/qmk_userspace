@@ -39,11 +39,6 @@
 #    endif
 #endif
 
-#ifdef SPLIT_USB_DETECT
-#    define SPLIT_USB_TIMEOUT 1000 // time to wait before timing out trying to detect primary/secondary half
-#    define EE_HANDS               // enables storing the handedness in eeprom
-#endif
-
 #ifdef DYNAMIC_MACRO_ENABLE
 #    define DYNAMIC_MACRO_NO_NESTING // I don't use nesting, so this saves a tiny bit of memory
 #    define DYNAMIC_MACRO_SIZE 128   // putting this at 256 causes eeprom corruption, but 128 works. I haven't bothered trying anything inbetween

@@ -42,7 +42,7 @@ enum my_keycodes {
 #define M_SLEPW KC_SLEP               // Windows sleep
 #define M_SLEPM LGUI(LALT(KC_PWR))    // Macos sleep
 #define M_SSHTW LGUI(LSFT(KC_S))      // Windows screenshot key
-#define M_SSHTM LGUI(LSFT(KC_5))      // Macos screenshot key
+#define M_SSHTM LALT(LSFT(KC_S))      // Macos screenshot key
 #define M_R_PLA RGB_MODE_PLAIN        // RGB Lighting
 #define M_R_BRE RGB_MODE_BREATHE      // RGB Lighting
 #define M_R_RAI RGB_MODE_RAINBOW      // RGB Lighting

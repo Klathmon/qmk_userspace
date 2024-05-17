@@ -1,4 +1,5 @@
 #include "./custom_keycodes.h"
+#include "split_util.h" // IWYU pragma: keep
 
 // Macro Functions
 void kvm_switch_input(uint8_t kvm_input_number) {
