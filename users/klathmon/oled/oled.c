@@ -3,6 +3,7 @@
 #include "./keylogger.h"
 #include "./oled_timeout_handler.h"
 #include "./customized_font_reader.h"
+#include "./wpm_animation.h"
 
 #ifdef DYNAMIC_MACRO_ENABLE
 bool is_recording_macro = false;
@@ -38,6 +39,9 @@ WEAK void dynamic_macro_record_end_user(int8_t direction) {
 /** Handles the custom OLED processing when needed, should be called from process_record_user in the keymap.c file */
 WEAK bool process_record_oled_handler(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
+#ifdef OLED_STATIC_BUILDUP
+        wpm_graph_key_pressed();
+#endif
 #ifdef DYNAMIC_MACRO_ENABLE
         if (is_recording_macro) {
             set_keylog(keycode, record);
@@ -53,15 +57,24 @@ WEAK bool process_record_oled_handler(uint16_t keycode, keyrecord_t *record) {
 }
 
 /** flips the display 180 degrees if offhand */
+#ifndef OLED_WPM_GRAPH
 WEAK oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     if (!is_keyboard_master()) return OLED_ROTATION_180;
     return rotation;
 }
+#endif
 
 /** The actual update loop for the OLED */
 WEAK bool oled_task_user(void) {
 #ifdef OLED_TIMEOUT
     if (!oled_handle_timeout()) {
+        return false;
+    }
+#endif
+
+#if defined(OLED_WPM_GRAPH) || defined(OLED_STATIC_BUILDUP)
+    if (!is_keyboard_master()) {
+        print_wpm_graph();
         return false;
     }
 #endif

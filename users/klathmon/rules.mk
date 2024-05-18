@@ -14,6 +14,10 @@ GRAVE_ESC_ENABLE       = no
 AVR_USE_MINIMAL_PRINTF = yes
 LTO_ENABLE             = yes # Enable LTO
 
+# my own custom feature flags
+OLED_WPM_GRAPH         = yes # Enable WPM graph animation on the secondary OLED
+OLED_STATIC_BUILDUP    = no  # Enable static buildup "animation" on the secondary OLED
+
 SRC += ./klathmon.c \
        ./custom_keycodes.c \
        ./key_overrides.c \
@@ -28,6 +32,16 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
          ./oled/keylogger.c \
          ./oled/oled_timeout_handler.c \
          ./oled/customized_font_reader.c
+
+  ifeq ($(strip $(OLED_WPM_GRAPH)), yes)
+  	WPM_ENABLE = yes # Enable WPM counter utils as they're needed for this feature
+    OPT_DEFS += -DOLED_WPM_GRAPH
+    SRC += ./oled/wpm_animation_graph.c
+  endif
+  ifeq ($(strip $(OLED_STATIC_BUILDUP)), yes)
+    OPT_DEFS += -DOLED_STATIC_BUILDUP
+    SRC += ./oled/wpm_animation_static.c
+  endif
 endif
 
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
