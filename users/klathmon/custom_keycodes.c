@@ -10,11 +10,11 @@ void kvm_switch_input(uint8_t kvm_input_number) {
     switch (kvm_input_number) {
         case KVM_INPUT_1:
             tap_code(KC_P1);
-            layer_move(_MAIN_MAC);
+            layer_move(_MAIN_WIN);
             break;
         case KVM_INPUT_2:
             tap_code(KC_P2);
-            layer_move(_MAIN_WIN);
+            layer_move(_MAIN_MAC);
             break;
     }
 }
