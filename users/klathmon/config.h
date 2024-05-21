@@ -22,6 +22,12 @@
 #    define MK_W_INTERVAL_UNMOD 40 /* Manages scrolling speed for my encoder mouse wheel scrolling feature */
 #endif
 
+#ifdef KEY_OVERRIDE_ENABLE
+#    define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_F18
+#    define MODS_TO_NEUTRALIZE \
+        { MOD_BIT(KC_LEFT_GUI) }
+#endif
+
 #ifdef OS_DETECTION_ENABLE
 #    define OS_DETECTION_DEBOUNCE 500   /* debounce time for os detection to settle down before picking */
 #    define OS_DETECTION_KEYBOARD_RESET /* reset the keyboard when the os changes (seemingly avoids the master OLED from crashing) */
