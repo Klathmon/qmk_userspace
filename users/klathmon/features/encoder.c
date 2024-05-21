@@ -3,6 +3,7 @@
 // Rotary Encoder Processing
 WEAK bool encoder_update_user(uint8_t index, bool clockwise) {
     switch (biton32(layer_state)) {
+        // scroll through space!
         case _MVMT_WIN:
         case _MVMT_MAC: {
             if (clockwise) {
@@ -13,10 +14,19 @@ WEAK bool encoder_update_user(uint8_t index, bool clockwise) {
             break;
         }
         case _NUMP: {
-            if (clockwise) {
-                tap_code16(LCTL(KC_Y));
+            // scroll through time!
+            if (is_mac_mode()) {
+                if (clockwise) {
+                    tap_code16(LGUI(LSFT(KC_Z)));
+                } else {
+                    tap_code16(LGUI(KC_Z));
+                }
             } else {
-                tap_code16(LCTL(KC_Z));
+                if (clockwise) {
+                    tap_code16(LCTL(KC_Y));
+                } else {
+                    tap_code16(LCTL(KC_Z));
+                }
             }
             break;
         }
@@ -42,10 +52,18 @@ WEAK bool encoder_update_user(uint8_t index, bool clockwise) {
         }
 #endif // OLED_ENABLE
         default: {
-            if (clockwise) {
-                tap_code(KC_VOLU);
+            if (is_mac_mode()) {
+                if (clockwise) {
+                        tap_code16(LSFT(LALT(KC_VOLU)));
+                } else {
+                        tap_code16(LSFT(LALT(KC_VOLD)));
+                }
             } else {
-                tap_code(KC_VOLD);
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
             }
             break;
         }
