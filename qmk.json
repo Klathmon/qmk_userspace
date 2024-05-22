@@ -3,6 +3,7 @@
     "build_targets": [
         ["lily58/rev1", "klathmon"],
         ["lily58/rev1", "klathmon_caterina"],
+        ["lily58/rev1", "klathmon_colemack_dh"],
         ["lily58/light", "klathmon_light"],
         ["qkf4", "klathmon"],
         ["planck/rev3", "klathmon"],
