@@ -52,19 +52,23 @@ WEAK bool encoder_update_user(uint8_t index, bool clockwise) {
         }
 #endif // OLED_ENABLE
         default: {
+#ifdef GSB_USE_FINE_VOLUME_CONTROL_ON_MACOS
             if (is_mac_mode()) {
                 if (clockwise) {
-                        tap_code16(LSFT(LALT(KC_VOLU)));
+                    tap_code16(LSFT(LALT(KC_VOLU)));
                 } else {
-                        tap_code16(LSFT(LALT(KC_VOLD)));
+                    tap_code16(LSFT(LALT(KC_VOLD)));
                 }
             } else {
+#endif
                 if (clockwise) {
                     tap_code(KC_VOLU);
                 } else {
                     tap_code(KC_VOLD);
                 }
+#ifdef GSB_USE_FINE_VOLUME_CONTROL_ON_MACOS
             }
+#endif
             break;
         }
     }

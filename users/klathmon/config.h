@@ -2,11 +2,12 @@
 
 /// My own custom options here ///
 
-#define GSB_DISABLE_MAGIC_KEYCODES   /* I'm not currently using any magic keycodes, so this saves a bit of memory */
-#define GSB_KVM_TAP_CODE_DELAY 100   /* time between keypresses in KVM related macros (as it misses quicker keypresses) */
-#define GSB_FLASH_INVERT_ON_KEYPRESS /* invert the OLED for one frame every time a key is pressed, helps prevent burn-in */
-#define GSB_MAC_WIN_MODE_ICON        /* define this to enable showing the macos/windows icon in the top right of the OLED */
-#define GSB_USE_CUSTOM_FONT          /* use the custom font for the OLED */
+#define GSB_DISABLE_MAGIC_KEYCODES           /* I'm not currently using any magic keycodes, so this saves a bit of memory */
+#define GSB_KVM_TAP_CODE_DELAY 100           /* time between keypresses in KVM related macros (as it misses quicker keypresses) */
+#define GSB_FLASH_INVERT_ON_KEYPRESS         /* invert the OLED for one frame every time a key is pressed, helps prevent burn-in */
+#define GSB_MAC_WIN_MODE_ICON                /* define this to enable showing the macos/windows icon in the top right of the OLED */
+#define GSB_USE_CUSTOM_FONT                  /* use the custom font for the OLED */
+// #define GSB_USE_FINE_VOLUME_CONTROL_ON_MACOS /* if defined, finer volume control is used for macos */
 
 /// settings I want configured on most/all of my keyboards ///
 
