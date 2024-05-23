@@ -11,6 +11,7 @@ OS_DETECTION_ENABLE    = yes # Enable OS detection for keymap
 # save some space in the firmware where possible
 SPACE_CADET_ENABLE     = no
 GRAVE_ESC_ENABLE       = no
+MAGIC_ENABLE           = no
 AVR_USE_MINIMAL_PRINTF = yes
 LTO_ENABLE             = yes # Enable LTO
 
