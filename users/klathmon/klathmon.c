@@ -10,6 +10,28 @@
 static bool last_is_mac_mode = false;
 #endif
 
+#ifdef QUICK_TAP_TERM_PER_KEY
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case M_NUMRD:
+            return TAPPING_TERM;
+        default:
+            return 0;
+    }
+}
+#endif
+
+#ifdef RETRO_TAPPING_PER_KEY
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case M_NUMRD:
+            return true;
+        default:
+            return false;
+    }
+}
+#endif
+
 /* Returns true if the keyboard is in mac mode */
 bool is_mac_mode(void) {
     bool on_mac_layer = IS_LAYER_ON(_MAIN_MAC) || IS_LAYER_ON(_MVMT_MAC) || IS_LAYER_ON(_HYPR_MAC);
