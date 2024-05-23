@@ -1,8 +1,8 @@
 // this is my disgusting hack to get clangd to cooperate and not throw a fit about the macros that QMK handles in python
 #ifndef QMK_KEYBOARD_H
 // for vscode
-#    define MATRIX_ROWS 999
-#    define MATRIX_COLS 999
+#    define MATRIX_ROWS 32
+#    define MATRIX_COLS 32
 #    define LAYOUT_ortho_5x12(...) \
         {}
 #    include "../../../../users/klathmon/klathmon.h"

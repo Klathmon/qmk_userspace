@@ -1,4 +1,11 @@
 #pragma once
+
+#ifndef QMK_KEYBOARD_H
+// for vscode
+#    define uint_farptr_t uint32_t
+#    define __AVR_ATmega32U4__
+#endif
+
 #include "quantum.h"         // IWYU pragma: keep
 #include "config.h"          // IWYU pragma: keep
 #include "custom_keycodes.h" // IWYU pragma: keep

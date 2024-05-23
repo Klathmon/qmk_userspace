@@ -1,9 +1,12 @@
 // this is my disgusting hack to get clangd to cooperate and not throw a fit about the macros that QMK handles in python
 #ifndef QMK_KEYBOARD_H
 // for vscode
+#    define uint_farptr_t uint32_t
+#    define __AVR_ATmega32U4__
+
 #    include "quantum.h"
-#    define MATRIX_ROWS 999
-#    define MATRIX_COLS 999
+#    define MATRIX_ROWS 32
+#    define MATRIX_COLS 32
 #    define LAYOUT(...) \
         {}
 #else

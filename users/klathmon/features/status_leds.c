@@ -1,8 +1,5 @@
 #include "../klathmon.h"
 
-#ifndef ADDRESS_BASE
-#    define ADDRESS_BASE
-#endif
 #ifndef GREEN_LED
 #    define GREEN_LED 0
 #endif

@@ -1,5 +1,10 @@
 #include "./audio.h"
 
+#ifndef QMK_KEYBOARD_H
+// for vscode because it gets the loal audio.h confused with the quantum one
+#    include "../../../qmk_firmware/quantum/audio/audio.h"
+#endif
+
 float coin_song[][2]    = SONG(E__NOTE(_A5), HD_NOTE(_E6), );
 float oneup_song[][2]   = SONG(Q__NOTE(_E6), Q__NOTE(_G6), Q__NOTE(_E7), Q__NOTE(_C7), Q__NOTE(_D7), Q__NOTE(_G7), );
 float mario_song[][2]   = SONG(Q__NOTE(_E5), H__NOTE(_E5), H__NOTE(_E5), Q__NOTE(_C5), H__NOTE(_E5), W__NOTE(_G5), Q__NOTE(_G4), );
