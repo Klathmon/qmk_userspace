@@ -3,6 +3,7 @@
 // Rotary Encoder Processing
 WEAK bool encoder_update_user(uint8_t index, bool clockwise) {
     switch (biton32(layer_state)) {
+#ifdef MOUSEKEY_ENABLE
         // scroll through space!
         case _MVMT_WIN:
         case _MVMT_MAC: {
@@ -13,6 +14,7 @@ WEAK bool encoder_update_user(uint8_t index, bool clockwise) {
             }
             break;
         }
+#endif
         case _NUMP: {
             // scroll through time!
             if (is_mac_mode()) {
