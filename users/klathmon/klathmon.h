@@ -4,6 +4,13 @@
 // for vscode
 #    define uint_farptr_t uint32_t
 #    define __AVR_ATmega32U4__
+// this makes clangd happy as it doesn't seem to understand that these are defined during compilation
+#    ifndef QMK_KEYBOARD
+#        define QMK_KEYBOARD "unknown"
+#    endif
+#    ifndef QMK_KEYMAP
+#        define QMK_KEYMAP "unknown"
+#    endif
 #endif
 
 #include "quantum.h"         // IWYU pragma: keep
@@ -32,11 +39,3 @@ enum my_layers {
 // clang-format on
 
 bool is_mac_mode(void);
-
-// this makes clangd happy as it doesn't seem to understand that these are defined during compilation
-#ifndef QMK_KEYBOARD
-#    define QMK_KEYBOARD "unknown"
-#endif
-#ifndef QMK_KEYMAP
-#    define QMK_KEYMAP "unknown"
-#endif
