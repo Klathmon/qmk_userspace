@@ -16,6 +16,7 @@ AVR_USE_MINIMAL_PRINTF = yes
 LTO_ENABLE             = yes # Enable LTO
 
 # my own custom feature flags
+GSB_KVM_ENABLE         = yes # Enable KVM-management keybindings and features
 OLED_WPM_GRAPH         = yes # Enable WPM graph animation on the secondary OLED
 OLED_STATIC_BUILDUP    = no  # Enable static buildup "animation" on the secondary OLED
 
@@ -35,7 +36,7 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
          ./oled/customized_font_reader.c
 
   ifeq ($(strip $(OLED_WPM_GRAPH)), yes)
-  	WPM_ENABLE = yes # Enable WPM counter utils as they're needed for this feature
+    WPM_ENABLE = yes # Enable WPM counter utils as they're needed for this feature
     OPT_DEFS += -DOLED_WPM_GRAPH
     SRC += ./oled/wpm_animation_graph.c
   endif
@@ -58,9 +59,13 @@ ifeq ($(strip $(GSB_GPIO_LEDS_ENABLE)), yes)
   SRC += ./features/status_leds.c
 endif
 
-
 ifeq ($(strip $(BOOTLOADER)), atmel-dfu)
   OPT_DEFS += -DGSB_ATMEL_DFU_BOOTLOADER
 else ifeq ($(strip $(BOOTLOADER)), caterina)
   OPT_DEFS += -DGSB_CATERINA_BOOTLOADER
+endif
+
+ifeq ($(strip $(GSB_KVM_ENABLE)), yes)
+  OPT_DEFS += -DGSB_KVM_ENABLE
+  SRC += ./features/kvm_manager.c
 endif

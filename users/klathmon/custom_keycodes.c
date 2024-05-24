@@ -4,39 +4,9 @@
 #    include "split_util.h" // IWYU pragma: keep
 #endif
 
-// Macro Functions
-void kvm_switch_input(uint8_t kvm_input_number) {
-    SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL), GSB_KVM_TAP_CODE_DELAY);
-    switch (kvm_input_number) {
-        case KVM_INPUT_1:
-            tap_code(KC_P1);
-            layer_move(_MAIN_WIN);
-            break;
-        case KVM_INPUT_2:
-            tap_code(KC_P2);
-            layer_move(_MAIN_MAC);
-            break;
-    }
-}
-
-/** Switches the KVM to main screen Macos, secondary screen Windows */
-void kvm_hybrid_mmac_swin(void) {
-    kvm_switch_input(KVM_INPUT_1);
-    wait_ms(GSB_KVM_TAP_CODE_DELAY);
-    SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL) SS_TAP(X_LEFT), GSB_KVM_TAP_CODE_DELAY);
-}
-/** Switches the KVM to main screen Windows, secondary screen Macos */
-void kvm_hybrid_mwin_smac(void) {
-    kvm_switch_input(KVM_INPUT_2);
-    wait_ms(GSB_KVM_TAP_CODE_DELAY);
-    SEND_STRING_DELAY(SS_TAP(X_RCTL) SS_TAP(X_RCTL) SS_TAP(X_LEFT), GSB_KVM_TAP_CODE_DELAY);
-}
-
-/** Swaps the keyboard and mouse between windows and macos machines */
-void kbm_swap_kbm(void) {
-    layer_invert(_MAIN_MAC);
-    SEND_STRING_DELAY(SS_TAP(X_RALT) SS_TAP(X_RALT), GSB_KVM_TAP_CODE_DELAY);
-}
+#ifdef GSB_KVM_ENABLE
+#    include "./features/kvm_manager.h"
+#endif
 
 /** Sends the qmk flash command for this keyboard */
 void send_flash_string(void) {
@@ -71,32 +41,13 @@ void send_flash_string(void) {
 
 /** Should be called from the keyboard's process_record_user function */
 bool process_record_custom_keycode_handler(uint16_t keycode, keyrecord_t *record) {
+#ifdef GSB_KVM_ENABLE
+    if (!process_record_kvm_manager(keycode, record)) {
+        return false;
+    }
+#endif
+
     switch (keycode) {
-        case KVM_C2:
-            if (record->event.pressed) {
-                kvm_switch_input(KVM_INPUT_2);
-            }
-            return false;
-        case KVM_C1:
-            if (record->event.pressed) {
-                kvm_switch_input(KVM_INPUT_1);
-            }
-            return false;
-        case K_MW_SM:
-            if (record->event.pressed) {
-                kvm_hybrid_mwin_smac();
-            }
-            return false;
-        case K_MM_SW:
-            if (record->event.pressed) {
-                kvm_hybrid_mmac_swin();
-            }
-            return false;
-        case K_S_KBM:
-            if (record->event.pressed) {
-                kbm_swap_kbm();
-            }
-            return false;
         case KQ_FLSH:
             if (record->event.pressed) {
                 send_flash_string();
