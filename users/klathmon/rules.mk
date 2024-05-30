@@ -7,6 +7,7 @@ KEY_OVERRIDE_ENABLE    = yes # Enable key override
 MOUSEKEY_ENABLE        = yes # Mouse keys
 NKRO_ENABLE            = yes # Enable N-Key Rollover
 OS_DETECTION_ENABLE    = yes # Enable OS detection for keymap
+COMBO_ENABLE           = no  # Enable chording "combos"
 
 # save some space in the firmware where possible
 SPACE_CADET_ENABLE     = no
@@ -68,4 +69,8 @@ endif
 ifeq ($(strip $(GSB_KVM_ENABLE)), yes)
   OPT_DEFS += -DGSB_KVM_ENABLE
   SRC += ./features/kvm_manager.c
+endif
+
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+  VPATH += keyboards/gboards
 endif

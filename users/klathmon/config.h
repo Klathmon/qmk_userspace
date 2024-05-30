@@ -25,28 +25,35 @@
 #endif
 
 #ifdef KEY_OVERRIDE_ENABLE
-#    define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_F18
-#    define MODS_TO_NEUTRALIZE \
-        { MOD_BIT(KC_LEFT_GUI) }
+#    define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_F18      /* use F18 as my neutralizer key as it's not used for anything else */
+#    define MODS_TO_NEUTRALIZE {MOD_BIT(KC_LEFT_GUI)} /* Unfortunately complex stuff because my vscode_complete_import_win is such a special little one */
 #endif
 
 #ifdef OS_DETECTION_ENABLE
-#    define OS_DETECTION_DEBOUNCE 500   /* debounce time for os detection to settle down before picking */
+#    define OS_DETECTION_DEBOUNCE 750   /* debounce time for os detection to settle down before picking */
 #    define OS_DETECTION_KEYBOARD_RESET /* reset the keyboard when the os changes (seemingly avoids the master OLED from crashing) */
 #endif
 
+#ifdef COMBO_ENABLE
+#    define EXTRA_SHORT_COMBOS /* we aren't using long combos, save a tad of runtime RAM */
+#endif
+
 #ifdef OLED_ENABLE
-#    define OLED_BRIGHTNESS 64       /* 0-255 keep this low to help prevent burn-in */
-#    define OLED_TIMEOUT 15000       /* time after touching the keyboard that the OLED will turn off, keep this low to help prevent burn-in */
-#    define SPLIT_OLED_ENABLE        /* on split boards, when the master oled turns off, the slave will as well */
-#    define SPLIT_LAYER_STATE_ENABLE /* makes sure that the slave half knows about the layer states of the master half */
-#    define SPLIT_TRANSPORT_MIRROR   /* mirror most/all states across the split halves */
+#    define OLED_BRIGHTNESS 64     /* 0-255 keep this low to help prevent burn-in */
+#    define OLED_TIMEOUT 15 * 1000 /* time after touching the keyboard that the OLED will turn off, keep this low to help prevent burn-in */
+#    ifdef SPLIT_KEYBOARD
+#        define SPLIT_OLED_ENABLE        /* on split boards, when the master oled turns off, the slave will as well */
+#        define SPLIT_LAYER_STATE_ENABLE /* makes sure that the slave half knows about the layer states of the master half */
+#        define SPLIT_TRANSPORT_MIRROR   /* mirror most/all states across the split halves */
+
+#        ifdef WPM_ENABLE
+#            define SPLIT_WPM_ENABLE /* enable sending WPM information to the secondary half on split oled keyboards */
+#        endif
+#    endif
+
 #    ifdef GSB_USE_CUSTOM_FONT
 #        undef OLED_FONT_H                             /* remove the default font */
 #        define OLED_FONT_H "./oled/customized_font.c" /* use a customized font */
-#    endif
-#    ifdef WPM_ENABLE
-#        define SPLIT_WPM_ENABLE
 #    endif
 #endif
 

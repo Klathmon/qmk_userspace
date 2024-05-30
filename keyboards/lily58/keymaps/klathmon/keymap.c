@@ -13,6 +13,10 @@
 #    include "custom_keycodes.h"
 #endif
 
+#ifdef COMBO_ENABLE
+#    include "g/keymap_combo.h"
+#endif
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MAIN_WIN] = LAYOUT(
