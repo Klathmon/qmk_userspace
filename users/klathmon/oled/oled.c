@@ -21,6 +21,7 @@ WEAK bool should_process_keypress(void) {
 #endif // SPLIT_TRANSPORT_MIRROR
 
 #ifdef DYNAMIC_MACRO_ENABLE
+#    ifdef GSB_SHOW_KEYLOGGER_DURING_MACRO
 /** Handle clearing out the previous recording and setting the index to 0 when we start recording a new dynamic macro */
 WEAK void dynamic_macro_record_start_user(int8_t direction) {
     for (int i = 0; i < sizeof(keylogs_str) - 1; i++) {
@@ -34,6 +35,7 @@ WEAK void dynamic_macro_record_start_user(int8_t direction) {
 WEAK void dynamic_macro_record_end_user(int8_t direction) {
     is_recording_macro = false;
 }
+#    endif
 #endif // DYNAMIC_MACRO_ENABLE
 
 /** Handles the custom OLED processing when needed, should be called from process_record_user in the keymap.c file */
@@ -43,9 +45,11 @@ WEAK bool process_record_oled_handler(uint16_t keycode, keyrecord_t *record) {
         wpm_graph_key_pressed();
 #endif
 #ifdef DYNAMIC_MACRO_ENABLE
+#    ifdef GSB_SHOW_KEYLOGGER_DURING_MACRO
         if (is_recording_macro) {
             set_keylog(keycode, record);
         }
+#    endif
 #endif // DYNAMIC_MACRO_ENABLE
 
 #ifdef GSB_FLASH_INVERT_ON_KEYPRESS

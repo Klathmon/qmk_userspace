@@ -54,8 +54,12 @@ void oled_print_mode_icon(void) {
 #ifdef DYNAMIC_MACRO_ENABLE
 void oled_print_recording_macro(void) {
     oled_clear();
+#    ifdef GSB_SHOW_KEYLOGGER_DURING_MACRO
     oled_write_ln_P(PSTR("Recording Macro:"), false);
     oled_write(read_keylogs(), false);
+#    else
+    oled_write_ln_P(PSTR("Recording Macro"), false);
+#    endif
     oled_invert(false);
 }
 #endif // DYNAMIC_MACRO_ENABLE

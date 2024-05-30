@@ -17,9 +17,10 @@ AVR_USE_MINIMAL_PRINTF = yes
 LTO_ENABLE             = yes # Enable LTO
 
 # my own custom feature flags
-GSB_KVM_ENABLE         = yes # Enable KVM-management keybindings and features
-OLED_WPM_GRAPH         = yes # Enable WPM graph animation on the secondary OLED
-OLED_STATIC_BUILDUP    = no  # Enable static buildup "animation" on the secondary OLED
+GSB_SHOW_KEYLOGGER_DURING_MACRO = yes # Enables showing the typed text while recording a macro
+GSB_KVM_ENABLE                  = yes # Enable KVM-management keybindings and features
+OLED_WPM_GRAPH                  = yes # Enable WPM graph animation on the secondary OLED
+OLED_STATIC_BUILDUP             = no  # Enable static buildup "animation" on the secondary OLED
 
 SRC += ./klathmon.c \
        ./custom_keycodes.c \
@@ -32,9 +33,15 @@ endif
 ifeq ($(strip $(OLED_ENABLE)), yes)
   SRC += ./oled/oled.c \
          ./oled/oled_print_funcs.c \
-         ./oled/keylogger.c \
          ./oled/oled_timeout_handler.c \
          ./oled/customized_font_reader.c
+
+  ifeq ($(strip $(DYNAMIC_MACRO_ENABLE)), yes)
+    ifeq ($(strip $(GSB_SHOW_KEYLOGGER_DURING_MACRO)), yes)
+      OPT_DEFS += -DGSB_SHOW_KEYLOGGER_DURING_MACRO
+      SRC += ./oled/keylogger.c
+    endif
+  endif
 
   ifeq ($(strip $(OLED_WPM_GRAPH)), yes)
     WPM_ENABLE = yes # Enable WPM counter utils as they're needed for this feature

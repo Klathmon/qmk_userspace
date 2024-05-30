@@ -4,7 +4,7 @@ char keylogs_str[21] = {};
 int  keylogs_str_idx = 0;
 
 // clang-format off
-const char code_to_name[60] = {
+const char PROGMEM code_to_name[60] = {
     ' ', ' ', ' ', ' ', 'a', 'b', 'c', 'd', 'e', 'f',
     'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
     'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
