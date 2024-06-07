@@ -24,11 +24,12 @@ const key_override_t vscode_complete_import_win = {.trigger_mods    = MOD_MASK_G
                                                    .enabled         = NULL};
 
 //                                                ko_make_with_layers(MOD_BIT(*)/MOD_MASK_*, KC_* keycode, KC_* override to send, 1 << _layer_to_be_active_on_goes_here)
-const key_override_t redo_windows        = ko_make_with_layers(MOD_MASK_CTRL, KC_Y, LCTL(LSFT(KC_Z)), 1 << _MAIN_WIN); // Windows:  CTRL+Y    -> CTRL+SHIFT+Z
-const key_override_t redo_macos          = ko_make_with_layers(MOD_MASK_GUI, KC_Y, LGUI(LSFT(KC_Z)), 1 << _MAIN_MAC);  // Macos:    CMD+Y     -> CMD+SHIFT+Z
-const key_override_t open_devtools_macos = ko_make_with_layers(MOD_MASK_SG, KC_J, LALT(LGUI(KC_J)), 1 << _MAIN_MAC);   // Macos:    CMD+J     -> OPT+CMD+J
-const key_override_t goto_line_macos     = ko_make_with_layers(MOD_MASK_GUI, KC_G, LCTL(KC_G), 1 << _MAIN_MAC);        // Macos:    CMD+G     -> CTRL+G
-const key_override_t video_recording     = ko_make_with_layers(MOD_MASK_CTRL, KC_G, LALT(LSFT(KC_R)), 1 << _MAIN_MAC); // Macos:    CTRL+G    -> ALT+SHIFT+R
+const key_override_t redo_windows         = ko_make_with_layers(MOD_MASK_CTRL, KC_Y, LCTL(LSFT(KC_Z)), 1 << _MAIN_WIN); // Windows: CTRL+Y    -> CTRL+SHIFT+Z
+const key_override_t redo_macos           = ko_make_with_layers(MOD_MASK_GUI, KC_Y, LGUI(LSFT(KC_Z)), 1 << _MAIN_MAC);  // Macos:   CMD+Y     -> CMD+SHIFT+Z
+const key_override_t open_devtools_macos  = ko_make_with_layers(MOD_MASK_SG, KC_J, LALT(LGUI(KC_J)), 1 << _MAIN_MAC);   // Macos:   CMD+J     -> OPT+CMD+J
+const key_override_t goto_line_macos      = ko_make_with_layers(MOD_MASK_GUI, KC_G, LCTL(KC_G), 1 << _MAIN_MAC);        // Macos:   CMD+G     -> CTRL+G
+const key_override_t video_recording      = ko_make_with_layers(MOD_MASK_CTRL, KC_G, LALT(LSFT(KC_R)), 1 << _MAIN_MAC); // Macos:   CTRL+G    -> ALT+SHIFT+R
+const key_override_t stop_process_windows = ko_make_with_layers(MOD_MASK_GUI, KC_C, LCTL(KC_C), 1 << _MAIN_WIN);        // Windows: WIN+C     -> CTRL+C
 
 // clang-format off
 WEAK const key_override_t **key_overrides = (const key_override_t *[]){
@@ -38,6 +39,7 @@ WEAK const key_override_t **key_overrides = (const key_override_t *[]){
     &open_devtools_macos,
     &goto_line_macos,
     &video_recording,
+    &stop_process_windows,
     NULL // Null terminate
 };
 // clang-format on
