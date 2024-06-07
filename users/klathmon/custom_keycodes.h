@@ -7,6 +7,10 @@ enum my_keycodes {
     KVM_MA1, // KVM: switch to machine 1
     KVM_MA2, // KVM: switch to machine 2
     KVM_MA3, // KVM: switch to machine 3
+    KVM_KBM, // KVM: switch to keyboard/mouse machine when running in split-host mode
+    KVM_SCA, // KVM: switch screen A, triggers a leader key and waits for the machine to be pressed next
+    KVM_SCB, // KVM: switch screen B, triggers a leader key and waits for the machine to be pressed next
+    KVM_SCC, // KVM: switch screen C, triggers a leader key and waits for the machine to be pressed next
 
     // audio stuff
     COINS,
