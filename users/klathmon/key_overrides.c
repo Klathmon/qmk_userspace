@@ -29,6 +29,10 @@ bool complete_win_c_ctrl_c(bool key_down, void *layer) {
         unregister_code(KC_LGUI);
 
         tap_code16(LCTL(KC_C));
+
+        register_code(KC_LGUI);
+    } else {
+        tap_code(KC_F18);
     }
     return false;
 }
