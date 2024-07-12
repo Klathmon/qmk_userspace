@@ -19,7 +19,7 @@ LTO_ENABLE             = yes # Enable LTO
 # my own custom feature flags
 GSB_SHOW_KEYLOGGER_DURING_MACRO = yes # Enables showing the typed text while recording a macro
 GSB_KVM_ENABLE                  = yes # Enable KVM-management keybindings and features
-OLED_WPM_GRAPH                  = yes # Enable WPM graph animation on the secondary OLED
+OLED_WPM_GRAPH                  = no  # Enable WPM graph animation on the secondary OLED
 OLED_STATIC_BUILDUP             = no  # Enable static buildup "animation" on the secondary OLED
 
 SRC += ./klathmon.c \
