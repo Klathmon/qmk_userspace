@@ -25,13 +25,14 @@
 #endif
 
 #ifdef KEY_OVERRIDE_ENABLE
-#    define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_F18      /* use F18 as my neutralizer key as it's not used for anything else */
-#    define MODS_TO_NEUTRALIZE {MOD_BIT(KC_LEFT_GUI)} /* Unfortunately complex stuff because my vscode_complete_import_win is such a special little one */
+#    define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_F18 /* use F18 as my neutralizer key as it's not used for anything else */
+#    define MODS_TO_NEUTRALIZE \
+        { MOD_BIT(KC_LEFT_GUI) } /* Unfortunately complex stuff because my vscode_complete_import_win is such a special little one */
 #endif
 
 #ifdef OS_DETECTION_ENABLE
-#    define OS_DETECTION_DEBOUNCE 750   /* debounce time for os detection to settle down before picking */
-#    define OS_DETECTION_KEYBOARD_RESET /* reset the keyboard when the os changes (seemingly avoids the master OLED from crashing) */
+#    define OS_DETECTION_DEBOUNCE 500 /* debounce time for os detection to settle down before picking */
+// #    define OS_DETECTION_KEYBOARD_RESET /* reset the keyboard when the os changes (seemingly avoids the master OLED from crashing) */
 #endif
 
 #ifdef COMBO_ENABLE
