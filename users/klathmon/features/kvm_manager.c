@@ -60,6 +60,13 @@ static uint16_t last_screen_split_target_machine;
 
 bool process_record_kvm_manager(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case M_HESCW:
+        case M_HESCM:
+            if (!record->event.pressed) {
+                layer_off(_HYPR_WIN);
+                layer_off(_HYPR_MAC);
+            }
+            return true;
         case KVM_MA1:
         case KVM_MA2:
         case KVM_MA3:
