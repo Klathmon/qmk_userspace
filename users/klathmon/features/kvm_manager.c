@@ -1,4 +1,6 @@
 #include "./kvm_manager.h"
+#include "_wait.h"
+#include "quantum.h"
 
 static bool pseudo_leader_key_pressed;
 
@@ -12,35 +14,49 @@ void kvm_switch_machine(uint16_t kvm_machine_keycode) {
             tap_code(KC_P1);
             if (!pseudo_leader_key_pressed) {
                 layer_move(_MAIN_WIN);
+                layer_on(_HYPR_WIN);
             }
             break;
         case KVM_MA2:
             tap_code(KC_P2);
             if (!pseudo_leader_key_pressed) {
                 layer_move(_MAIN_MAC);
+                layer_on(_HYPR_MAC);
             }
             break;
         case KVM_MA3:
             tap_code(KC_P3);
             if (!pseudo_leader_key_pressed) {
                 layer_move(_MAIN_WIN);
+                layer_on(_HYPR_WIN);
             }
             break;
         case KVM_MA4:
             tap_code(KC_P4);
             if (!pseudo_leader_key_pressed) {
                 layer_move(_MAIN_WIN);
+                layer_on(_HYPR_WIN);
             }
             break;
+    }
+
+    if (!pseudo_leader_key_pressed) {
+        wait_ms(GSB_KVM_TAP_CODE_DELAY * 2);
+        tap_code(KC_ESC);
+
+        active_kvm_machine = kvm_machine_keycode;
     }
 
     if (pseudo_leader_key_pressed) {
         pseudo_leader_key_pressed = false;
     }
-}
 
-uint16_t last_activated_kvm_machine;
-uint16_t last_screen_split_target_machine;
+    // just take up some time doing nothing to avoid repeat quick presses from wreaking havoc
+    wait_ms(GSB_KVM_TAP_CODE_DELAY * 2);
+}
+/** used for determining what os has "focus" */
+static uint16_t last_activated_kvm_machine;
+static uint16_t last_screen_split_target_machine;
 
 bool process_record_kvm_manager(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -49,12 +65,12 @@ bool process_record_kvm_manager(uint16_t keycode, keyrecord_t *record) {
         case KVM_MA3:
         case KVM_MA4:
             if (record->event.pressed) {
-                kvm_switch_machine(keycode);
                 if (pseudo_leader_key_pressed) {
                     last_screen_split_target_machine = keycode;
                 } else {
                     last_activated_kvm_machine = keycode;
                 }
+                kvm_switch_machine(keycode);
             }
             return false;
         case KVM_KBM:
@@ -63,6 +79,12 @@ bool process_record_kvm_manager(uint16_t keycode, keyrecord_t *record) {
 
                 if (last_activated_kvm_machine == KVM_MA2 || last_screen_split_target_machine == KVM_MA2) {
                     layer_invert(_MAIN_MAC);
+                }
+
+                if (active_kvm_machine == last_activated_kvm_machine) {
+                    active_kvm_machine = last_screen_split_target_machine;
+                } else {
+                    active_kvm_machine = last_activated_kvm_machine;
                 }
             }
             return false;

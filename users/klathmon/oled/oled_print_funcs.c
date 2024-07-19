@@ -1,5 +1,8 @@
 #include "./oled_print_funcs.h"
 #include "./keylogger.h"
+#ifdef GSB_KVM_ENABLE
+#    include "./features/kvm_manager.h"
+#endif
 
 /** Prints the current layer and optionally the OS mode on the top line of the OLED */
 void oled_print_layer_state_string(bool write_os) {
@@ -35,6 +38,27 @@ void oled_print_layer_state_string(bool write_os) {
             oled_write_ln_P(PSTR("Win"), false);
         }
     }
+
+#ifdef GSB_KVM_ENABLE
+    oled_set_cursor(0, 1);
+    switch (active_kvm_machine) {
+        case KVM_MA1:
+            oled_write_ln_P(PSTR("Focus: 1 Personal"), false);
+            break;
+        case KVM_MA2:
+            oled_write_ln_P(PSTR("Focus: 2 Macbook"), false);
+            break;
+        case KVM_MA3:
+            oled_write_ln_P(PSTR("Focus: 3 Win x64"), false);
+            break;
+        case KVM_MA4:
+            oled_write_ln_P(PSTR("Focus: 4 Win ARM"), false);
+            break;
+        default:
+            oled_write_ln_P(PSTR("Focus: ? Unknown"), false);
+            break;
+    }
+#endif
 }
 
 #ifdef GSB_MAC_WIN_MODE_ICON
