@@ -28,8 +28,8 @@
 // clang-format off
 enum my_layers {
     _MAIN_WIN, // Main layer for Windows
-    _MVMT_WIN, // Movement layer for Windows
     _MAIN_MAC, // Main layer for MacOS
+    _MVMT_WIN, // Movement layer for Windows
     _MVMT_MAC, // Movement layer for MacOS
     _NUMR,     // Number row delete layer tap
     _NUMP,     // Numpad layer
