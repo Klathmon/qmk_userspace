@@ -45,7 +45,10 @@
 #    ifdef SPLIT_KEYBOARD
 #        define SPLIT_OLED_ENABLE        /* on split boards, when the master oled turns off, the slave will as well */
 #        define SPLIT_LAYER_STATE_ENABLE /* makes sure that the slave half knows about the layer states of the master half */
-#        define SPLIT_TRANSPORT_MIRROR   /* mirror most/all states across the split halves */
+
+#        if defined(WPM_ENABLE) || defined(OLED_STATIC_BUILDUP)
+#            define SPLIT_TRANSPORT_MIRROR /* mirror most/all states across the split halves */
+#        endif
 
 #        ifdef WPM_ENABLE
 #            define SPLIT_WPM_ENABLE /* enable sending WPM information to the secondary half on split oled keyboards */

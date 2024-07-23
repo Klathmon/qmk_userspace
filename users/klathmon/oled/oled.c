@@ -76,16 +76,37 @@ WEAK bool oled_task_user(void) {
     }
 #endif
 
-#if defined(OLED_WPM_GRAPH) || defined(OLED_STATIC_BUILDUP)
+#if defined(OLED_SECONDARY_BORING_IMAGE)
+    if (!is_keyboard_master()) {
+        oled_print_secondary_logo();
+
+#    ifdef GSB_FLASH_INVERT_ON_KEYPRESS
+        // if enabled, invert the display for a single frame
+        oled_invert(should_flash_inverted);
+        should_flash_inverted = false;
+#    endif
+
+        return false;
+    }
+#elif defined(OLED_WPM_GRAPH) || defined(OLED_STATIC_BUILDUP)
     if (!is_keyboard_master()) {
         print_wpm_graph();
-        return false;
+#    ifdef GSB_FLASH_INVERT_ON_KEYPRESS
+        // if enabled, invert the display for a single frame
+        oled_invert(should_flash_inverted);
+        should_flash_inverted = false;
+#    endif
     }
 #endif
 
 #ifdef DYNAMIC_MACRO_ENABLE
     if (is_recording_macro) {
         oled_print_recording_macro();
+#    ifdef GSB_FLASH_INVERT_ON_KEYPRESS
+        // if enabled, invert the display for a single frame
+        oled_invert(should_flash_inverted);
+        should_flash_inverted = false;
+#    endif
         return false;
     }
 #endif // DYNAMIC_MACRO_ENABLE

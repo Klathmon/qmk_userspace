@@ -1,5 +1,6 @@
 #include "./oled_print_funcs.h"
 #include "./keylogger.h"
+#include "./customized_font_reader.h"
 #ifdef GSB_KVM_ENABLE
 #    include "./features/kvm_manager.h"
 #endif
@@ -108,3 +109,19 @@ void oled_print_boot_message(bool bootloader) {
 
     oled_render_dirty(true);
 }
+
+#ifdef OLED_SECONDARY_BORING_IMAGE
+static float line_to_paint   = 0;
+static float column_to_paint = 0;
+
+void oled_print_secondary_logo(void) {
+    if (!is_keyboard_master()) {
+        line_to_paint += 0.02;
+        column_to_paint += 0.02;
+
+        oled_clear();
+        oled_set_cursor((abs((int)column_to_paint) % 4), (abs((int)line_to_paint) % 4));
+        oled_write_P(read_logo_P(), false);
+    }
+}
+#endif

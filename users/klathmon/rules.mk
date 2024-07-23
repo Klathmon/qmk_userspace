@@ -19,6 +19,7 @@ LTO_ENABLE             = yes # Enable LTO
 # my own custom feature flags
 GSB_SHOW_KEYLOGGER_DURING_MACRO = yes # Enables showing the typed text while recording a macro
 GSB_KVM_ENABLE                  = yes # Enable KVM-management keybindings and features
+OLED_SECONDARY_BORING_IMAGE     = yes # Enable the boring image on the secondary OLED as a fallback if the other stuff keeps crashing
 OLED_WPM_GRAPH                  = no  # Enable WPM graph animation on the secondary OLED
 OLED_STATIC_BUILDUP             = no  # Enable static buildup "animation" on the secondary OLED
 
@@ -43,6 +44,9 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
     endif
   endif
 
+  ifeq ($(strip $(OLED_SECONDARY_BORING_IMAGE)), yes)
+    OPT_DEFS += -DOLED_SECONDARY_BORING_IMAGE
+  endif
   ifeq ($(strip $(OLED_WPM_GRAPH)), yes)
     WPM_ENABLE = yes # Enable WPM counter utils as they're needed for this feature
     OPT_DEFS += -DOLED_WPM_GRAPH

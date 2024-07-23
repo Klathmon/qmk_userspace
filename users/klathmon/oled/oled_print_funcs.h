@@ -14,3 +14,7 @@ void oled_print_mode_icon(void);
 #ifdef DYNAMIC_MACRO_ENABLE
 void oled_print_recording_macro(void);
 #endif // DYNAMIC_MACRO_ENABLE
+
+#ifdef OLED_SECONDARY_BORING_IMAGE
+void oled_print_secondary_logo(void);
+#endif // OLED_SECONDARY_BORING_IMAGE
