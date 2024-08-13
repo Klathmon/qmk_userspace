@@ -32,14 +32,6 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 }
 #endif
 
-/* just always enable numlock if it's ever disabled for any reason, i'm tired of not having numlock! */
-bool led_update_user(led_t led_state) {
-    if (!led_state.num_lock) {
-        tap_code(KC_NUM_LOCK);
-    }
-    return true;
-}
-
 /* Returns true if the keyboard is in mac mode */
 bool is_mac_mode(void) {
     bool on_mac_layer = IS_LAYER_ON(_MAIN_MAC) || IS_LAYER_ON(_MVMT_MAC) || IS_LAYER_ON(_HYPR_MAC);
@@ -51,6 +43,14 @@ bool is_mac_mode(void) {
     }
 #endif
     return on_mac_layer;
+}
+
+/* just always enable numlock if it's ever disabled for any reason, i'm tired of not having numlock! */
+bool led_update_user(led_t led_state) {
+    if (!is_mac_mode() && !led_state.num_lock) {
+        tap_code(KC_NUM_LOCK);
+    }
+    return true;
 }
 
 /** The default process_record_user, i'm going to try and get this to work the same on all my boards */
