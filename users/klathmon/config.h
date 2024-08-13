@@ -31,8 +31,8 @@
 #endif
 
 #ifdef OS_DETECTION_ENABLE
-#    define OS_DETECTION_DEBOUNCE 500 /* debounce time for os detection to settle down before picking */
-// #    define OS_DETECTION_KEYBOARD_RESET /* reset the keyboard when the os changes (seemingly avoids the master OLED from crashing) */
+#    define OS_DETECTION_DEBOUNCE 500   /* debounce time for os detection to settle down before picking */
+#    define OS_DETECTION_KEYBOARD_RESET /* reset the keyboard when the os changes (seemingly avoids the master OLED from crashing) */
 #endif
 
 #ifdef COMBO_ENABLE
