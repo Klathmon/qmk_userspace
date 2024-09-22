@@ -96,6 +96,7 @@ WEAK bool oled_task_user(void) {
         oled_invert(should_flash_inverted);
         should_flash_inverted = false;
 #    endif
+        return false;
     }
 #endif
 
