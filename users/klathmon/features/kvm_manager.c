@@ -41,9 +41,6 @@ void kvm_switch_machine(uint16_t kvm_machine_keycode) {
     }
 
     if (!pseudo_leader_key_pressed) {
-        wait_ms(GSB_KVM_TAP_CODE_DELAY * 2);
-        tap_code(KC_ESC);
-
         active_kvm_machine = kvm_machine_keycode;
     }
 
@@ -52,7 +49,7 @@ void kvm_switch_machine(uint16_t kvm_machine_keycode) {
     }
 
     // just take up some time doing nothing to avoid repeat quick presses from wreaking havoc
-    wait_ms(GSB_KVM_TAP_CODE_DELAY * 2);
+    wait_ms(GSB_KVM_TAP_CODE_DELAY * 4);
 }
 /** used for determining what os has "focus" */
 static uint16_t last_activated_kvm_machine;
