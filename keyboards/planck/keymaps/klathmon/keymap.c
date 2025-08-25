@@ -4,7 +4,8 @@
 #    define MATRIX_ROWS 32
 #    define MATRIX_COLS 32
 #    define LAYOUT_planck_grid(...) \
-        {}
+        {                           \
+        }
 #    include "../../../../users/klathmon/klathmon.h"
 #else
 // for qmk
@@ -59,13 +60,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CAPS, COINS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS, KC_PSCR, KC_BRMD, KVM_MA1, KVM_MA2, KVM_MA3,
         DISNEY,  MARIOT,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   M_LOCKW, KC_VOLD, KC_MUTE, KC_VOLU, KC_WBAK, KC_WFWD,
         CK_TOGG, MARIOG,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  M_SLEPW, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, M_TGLM,
-        MU_TOGG, MU_NEXT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QK_BOOT, KQ_FLSH, KC_TRNS, KC_TRNS, KC_TRNS, M_TGLM
+        M_SSHTW, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QK_BOOT, KQ_FLSH, KC_TRNS, KC_TRNS, KC_TRNS, M_TGLM
     ),
     [_HYPR_MAC] = LAYOUT_planck_grid(
         KC_CAPS, COINS,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS, KC_PSCR, KC_BRMD, KVM_MA1, KVM_MA2, KVM_MA3,
         DISNEY,  MARIOT,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   M_LOCKW, KC_VOLD, KC_MUTE, KC_VOLU, M_BAKM,  M_FWDM,
         CK_TOGG, MARIOG,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  M_SLEPW, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, M_TGLM,
-        MU_TOGG, MU_NEXT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QK_BOOT, KQ_FLSH, KC_TRNS, KC_TRNS, KC_TRNS, M_TGLM
+        M_SSHTM, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, QK_BOOT, KQ_FLSH, KC_TRNS, KC_TRNS, KC_TRNS, M_TGLM
     )
 };
 // clang-format on

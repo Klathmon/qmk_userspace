@@ -4,7 +4,8 @@
 #    define MATRIX_ROWS 32
 #    define MATRIX_COLS 32
 #    define LAYOUT_split_3x6_3(...) \
-        {}
+        {                           \
+        }
 #    include "../../../../../users/klathmon/klathmon.h"
 #else
 // for qmk
@@ -23,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
         KC_LGUI, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-                                   M_LALTE, KC_LCTL, KC_SPC,                   KC_DEL,  M_MVMTW, M_NUMP
+                                   M_LALTE, KC_LCTL, KC_SPC,                   M_NUMRD,  M_MVMTW, M_NUMP
     ),
     [_MVMT_WIN] = LAYOUT_split_3x6_3(
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS, M_LWRDW, KC_UP,   M_RWRDW, KC_LBRC, KC_RBRC,
@@ -35,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
         M_MSPOT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-                                   M_LALTE, KC_LGUI, KC_SPC,                   KC_DEL,  M_MVMTM, M_NUMP
+                                   M_LALTE, KC_LGUI, KC_SPC,                   M_NUMRD,  M_MVMTM, M_NUMP
     ),
     [_MVMT_MAC] = LAYOUT_split_3x6_3(
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS, M_LWRDM, KC_UP,   M_RWRDM, KC_LBRC, KC_RBRC,

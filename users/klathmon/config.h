@@ -15,6 +15,7 @@
 #define QUICK_TAP_TERM_PER_KEY    /* only allow quick-tap for the M_NUMRD key */
 #define TAPPING_TERM 100          /* tweak the difference between when a *tap key is pressed vs a hold version of the key. defaults to 100ms */
 #define USB_POLLING_INTERVAL_MS 7 /* reduces latency a tiny bit, but we could run out of CPU time and drop keys if we push this too low */
+#define DEBOUNCE 15
 
 /// per feature settings which are pretty universal ///
 
