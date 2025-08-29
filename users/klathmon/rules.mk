@@ -24,8 +24,7 @@ OLED_WPM_GRAPH                  = yes # Enable WPM graph animation on the second
 OLED_STATIC_BUILDUP             = no  # Enable static buildup "animation" on the secondary OLED
 
 SRC += ./klathmon.c \
-       ./custom_keycodes.c \
-       ./key_overrides.c \
+  ./custom_keycodes.c
 
 ifeq ($(strip $(OS_DETECTION_ENABLE)), yes)
   SRC += ./features/os_detection.c
@@ -85,3 +84,8 @@ endif
 ifeq ($(strip $(COMBO_ENABLE)), yes)
   VPATH += keyboards/gboards
 endif
+
+# Ensure keymap introspection can see userspace-defined arrays like key_overrides
+INTROSPECTION_KEYMAP_C = ../../users/klathmon/key_overrides.c
+
+

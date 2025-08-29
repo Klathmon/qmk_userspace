@@ -77,7 +77,7 @@ const key_override_t win_ctrl_gui_g_to_alt_ctrl_g = {
 };
 
 // clang-format off
-WEAK const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &vscode_complete_import_win,
     &stop_process_windows,
     // &redo_windows,
@@ -87,7 +87,6 @@ WEAK const key_override_t **key_overrides = (const key_override_t *[]){
     // &video_recording,
     &win_ctrl_gui_f_to_alt_ctrl_f,
     &win_ctrl_gui_g_to_alt_ctrl_g,
-    NULL // Null terminate
 };
 // clang-format on
 #endif // KEY_OVERRIDE_ENABLE
