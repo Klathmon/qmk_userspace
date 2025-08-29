@@ -1,4 +1,5 @@
 USER_NAME := klathmon
+BOOTLOADER = rp2040
 
 OLED_ENABLE       = no # OLED display
 
