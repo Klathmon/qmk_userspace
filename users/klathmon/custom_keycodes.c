@@ -35,9 +35,9 @@ void send_flash_string(void) {
 #        else
 #            ifdef GSB_RP2040_BOOTLOADER
         if (isLeftHand) {
-            SEND_STRING(" -bl avrdude-split-left");
+            SEND_STRING(" -bl uf2-split-left");
         } else {
-            SEND_STRING(" -bl avrdude-split-right");
+            SEND_STRING(" -bl uf2-split-right");
         }
 #            endif
 #        endif
