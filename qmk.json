@@ -10,6 +10,6 @@
         ["planck/rev3", "steno"],
         ["keebio/bdn9/rev1", "klathmon_macro"],
         ["keebio/iris/rev2", "klathmon"],
-        ["crkbd/rev1", "klathmon"]
+        ["crkbd/rev4_1/standard", "klathmon"]
     ]
 }

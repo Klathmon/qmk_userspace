@@ -74,6 +74,8 @@ ifeq ($(strip $(BOOTLOADER)), atmel-dfu)
   OPT_DEFS += -DGSB_ATMEL_DFU_BOOTLOADER
 else ifeq ($(strip $(BOOTLOADER)), caterina)
   OPT_DEFS += -DGSB_CATERINA_BOOTLOADER
+else ifeq ($(strip $(BOOTLOADER)), uf2)
+  OPT_DEFS += -DGSB_RP2040_BOOTLOADER
 endif
 
 ifeq ($(strip $(GSB_KVM_ENABLE)), yes)
