@@ -21,7 +21,7 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MAIN_WIN] = LAYOUT_split_3x6_3_ex2(
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_TRNS,RM_TOGG, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    M_HESCW,RM_TOGG, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
         KC_LGUI, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,M_LOCKW, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
                                    M_LALTE, KC_LCTL, KC_SPC,                   M_NUMRD,  M_MVMTW, M_NUMP
@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS, KC_TRNS, KC_TRNS
     ),
     [_MAIN_MAC] = LAYOUT_split_3x6_3_ex2(
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_TRNS,RM_TOGG, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    M_HESCM,RM_TOGG, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
         M_MSPOT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_TRNS,M_LOCKM, KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
                                    M_LALTE, KC_LGUI, KC_SPC,                   M_NUMRD,  M_MVMTM, M_NUMP
@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_HYPR_MAC] = LAYOUT_split_3x6_3_ex2(
         DM_REC2, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_TRNS, KC_TRNS,KC_TRNS, KC_TRNS, KC_PSCR, KVM_KBM, KVM_MA1, KVM_MA2, KVM_MA3,
-        DM_PLY2, KC_F5,   KC_F6,   KC_F7,   KC_F8,  KC_TRNS, KC_TRNS,M_SLEPM, M_SLEPM, KC_VOLD, KC_MUTE, KC_VOLU, M_BAKM,  M_FWDM,
+        DM_PLY2, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_TRNS, KC_TRNS,M_SLEPM, M_SLEPM, KC_VOLD, KC_MUTE, KC_VOLU, M_BAKM,  M_FWDM,
         M_SSHTM, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,                  KQ_FLSH, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS, M_TGLM,
                                    KC_TRNS, KQ_FLSH, QK_BOOT,                  QK_BOOT, KQ_FLSH, KC_TRNS
     )
