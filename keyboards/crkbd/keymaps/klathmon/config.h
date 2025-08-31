@@ -9,7 +9,8 @@
 // -------------------------------
 
 // Brightness limit
-#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200
+#undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
 
 // Turn off LEDs when USB is suspended (sleep: true)
 #define RGB_MATRIX_SLEEP
@@ -28,6 +29,9 @@
 #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
 #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
 #define ENABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
+
+// make the heatmap only show the exact keys i'm pressing
+#define RGB_MATRIX_TYPING_HEATMAP_SLIM
 
 // Disabled effects
 #undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
