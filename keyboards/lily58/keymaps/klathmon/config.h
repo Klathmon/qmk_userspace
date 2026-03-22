@@ -5,9 +5,9 @@
 #define EE_HANDS               // enables storing the handedness in eeprom
 
 // Encoders
-#ifndef ENCODERS_PAD_A
-#    define ENCODERS_PAD_A \
-        { F5 }
-#    define ENCODERS_PAD_B \
-        { F4 }
-#endif
+#undef ENCODER_A_PINS
+#define ENCODER_A_PINS \
+    { F5 }
+#undef ENCODER_B_PINS
+#define ENCODER_B_PINS \
+    { F4 }

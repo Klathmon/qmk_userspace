@@ -33,7 +33,7 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 #endif
 
 /* Returns true if the keyboard is in mac mode */
-bool is_mac_mode(void) {
+__attribute__((weak)) bool is_mac_mode(void) {
     bool on_mac_layer = IS_LAYER_ON(_MAIN_MAC) || IS_LAYER_ON(_MVMT_MAC) || IS_LAYER_ON(_HYPR_MAC);
 #ifdef CONSOLE_ENABLE
     if (last_is_mac_mode != on_mac_layer) {

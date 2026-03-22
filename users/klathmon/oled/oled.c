@@ -23,17 +23,19 @@ WEAK bool should_process_keypress(void) {
 #ifdef DYNAMIC_MACRO_ENABLE
 #    ifdef GSB_SHOW_KEYLOGGER_DURING_MACRO
 /** Handle clearing out the previous recording and setting the index to 0 when we start recording a new dynamic macro */
-WEAK void dynamic_macro_record_start_user(int8_t direction) {
+WEAK bool dynamic_macro_record_start_user(int8_t direction) {
     for (int i = 0; i < sizeof(keylogs_str) - 1; i++) {
         keylogs_str[i] = ' ';
     }
     keylogs_str_idx = 0;
 
     is_recording_macro = true;
+    return true;
 }
 /** Handles setting the bool flag when we are done recording a macro */
-WEAK void dynamic_macro_record_end_user(int8_t direction) {
+WEAK bool dynamic_macro_record_end_user(int8_t direction) {
     is_recording_macro = false;
+    return true;
 }
 #    endif
 #endif // DYNAMIC_MACRO_ENABLE
