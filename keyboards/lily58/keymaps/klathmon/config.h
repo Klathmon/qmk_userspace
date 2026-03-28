@@ -6,8 +6,6 @@
 
 // Encoders
 #undef ENCODER_A_PINS
-#define ENCODER_A_PINS \
-    { F5 }
+#define ENCODER_A_PINS {F5}
 #undef ENCODER_B_PINS
-#define ENCODER_B_PINS \
-    { F4 }
+#define ENCODER_B_PINS {F4}

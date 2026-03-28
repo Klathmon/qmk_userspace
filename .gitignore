@@ -5,7 +5,11 @@
 .DS_Store
 ._*
 
-# Firmware files
+# Build artifacts
 *.hex
 *.bin
 *.uf2
+
+# Local directories
+.cache/
+qmk_firmware/

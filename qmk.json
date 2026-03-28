@@ -11,6 +11,6 @@
         ["keebio/iris/rev2", "klathmon"],
         ["crkbd/rev4_1/standard", "klathmon"],
         ["israfel", "klathmon"],
-        ["helix/rev3_5rows", "klathmon", {"CONVERT_TO": "elite_pi"}]
+        ["helix/rev3_5rows", "klathmon", { "CONVERT_TO": "elite_pi" }]
     ]
 }
