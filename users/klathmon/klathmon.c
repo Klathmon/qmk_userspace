@@ -45,6 +45,23 @@ __attribute__((weak)) bool is_mac_mode(void) {
     return on_mac_layer;
 }
 
+/* Shared tri-layer behavior: Movement + Numpad activates the matching Hyper layer. */
+WEAK layer_state_t layer_state_set_user(layer_state_t state) {
+    const bool manual_hyper_win = layer_state_cmp(state, _HYPR_WIN);
+    const bool manual_hyper_mac = layer_state_cmp(state, _HYPR_MAC);
+
+    state = update_tri_layer_state(state, _MVMT_WIN, _NUMP, _HYPR_WIN);
+    state = update_tri_layer_state(state, _MVMT_MAC, _NUMP, _HYPR_MAC);
+
+    if (manual_hyper_win) {
+        state |= ((layer_state_t)1 << _HYPR_WIN);
+    }
+    if (manual_hyper_mac) {
+        state |= ((layer_state_t)1 << _HYPR_MAC);
+    }
+    return state;
+}
+
 /* just always enable numlock if it's ever disabled for any reason, i'm tired of not having numlock! */
 bool led_update_user(led_t led_state) {
     if (!is_mac_mode() && !led_state.num_lock) {

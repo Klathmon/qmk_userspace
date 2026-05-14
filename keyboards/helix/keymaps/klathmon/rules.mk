@@ -7,4 +7,4 @@ RGBLIGHT_ENABLE   = no  # no RGB underglow
 RGB_MATRIX_ENABLE = no  # no RGB matrix
 ENCODER_ENABLE    = no  # no rotary encoder
 
-include ../users/klathmon/rules.mk # This is only included here is to make the generate-compilation-database command work properly.
+include $(QMK_USERSPACE)/users/klathmon/rules.mk # This is only included here is to make the generate-compilation-database command work properly.

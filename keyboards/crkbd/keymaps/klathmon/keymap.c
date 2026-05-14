@@ -70,23 +70,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 // clang-format on
-
-// use tri-layer-state to handle the hyper layer
-layer_state_t layer_state_set_user(layer_state_t state) {
-    // If user manually held MO(_HYPR_*), keep it even if tri-layer isn't active
-    const bool manual_hyper_win = layer_state_cmp(state, _HYPR_WIN);
-    const bool manual_hyper_mac = layer_state_cmp(state, _HYPR_MAC);
-
-    // Tri-layer: enable Hyper when both Movement and Numpad are active
-    state = update_tri_layer_state(state, _MVMT_WIN, _NUMP, _HYPR_WIN);
-    state = update_tri_layer_state(state, _MVMT_MAC, _NUMP, _HYPR_MAC);
-
-    // Re-apply manual Hyper if tri-layer logic cleared it
-    if (manual_hyper_win) {
-        state |= ((layer_state_t)1 << _HYPR_WIN);
-    }
-    if (manual_hyper_mac) {
-        state |= ((layer_state_t)1 << _HYPR_MAC);
-    }
-    return state;
-}

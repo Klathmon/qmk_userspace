@@ -28,13 +28,13 @@ This is a template repository which allows for an external set of QMK keymaps to
 
 ## Howto build locally
 
-1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
 1. Fork this repository
 1. Clone your fork to your local machine
 1. `cd` into this repository's clone directory
-1. Set global userspace path: `qmk config user.overlay_dir="$(realpath .)"` -- you MUST be located in the cloned userspace location for this to work correctly
-    * This will be automatically detected if you've `cd`ed into your userspace repository, but the above makes your userspace available regardless of your shell location.
-1. Compile normally: `qmk compile -kb your_keyboard -km your_keymap` or `make your_keyboard:your_keymap`
+1. Run `./install.sh`
+    * This creates a local `.venv`, installs the QMK CLI there, clones `qmk_firmware` into this worktree, initializes QMK submodules, and points QMK at this userspace overlay.
+    * By default it uses `Klathmon/qmk_firmware` on `klathmon_external_userspace`, which includes the custom keyboards in `qmk.json`. Override with `QMK_REPO`, `QMK_REF`, or `QMK_HOME` if needed.
+1. Compile normally: `qmk compile -kb your_keyboard -km your_keymap`, `make your_keyboard:your_keymap`, or `./compile-all.sh`
 
 Alternatively, if you configured your build targets above, you can use `qmk userspace-compile` to build all of your userspace targets at once.
 
