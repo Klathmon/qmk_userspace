@@ -12,4 +12,5 @@
 
 # Local directories
 .cache/
+.venv/
 qmk_firmware/
