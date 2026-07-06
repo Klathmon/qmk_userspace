@@ -45,6 +45,20 @@ static void kvm_swap_keyboard_mouse(void) {
     }
 }
 
+static bool kvm_should_play_pause_remote(uint16_t keycode) {
+    return keycode == KC_MPLY && (get_mods() & MOD_MASK_GUI) && (IS_LAYER_ON(_HYPR_WIN) || IS_LAYER_ON(_HYPR_MAC));
+}
+
+static void kvm_play_pause_remote(void) {
+    const uint8_t saved_mods = kvm_suspend_mods();
+
+    kvm_swap_keyboard_mouse();
+    tap_code(KC_MPLY);
+    kvm_swap_keyboard_mouse();
+
+    kvm_restore_mods(saved_mods);
+}
+
 void kvm_switch_machine(uint16_t kvm_machine_keycode) {
     const uint8_t saved_mods = kvm_suspend_mods();
 
@@ -98,6 +112,12 @@ void kvm_switch_machine(uint16_t kvm_machine_keycode) {
 }
 bool process_record_kvm_manager(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case KC_MPLY:
+            if (record->event.pressed && kvm_should_play_pause_remote(keycode)) {
+                kvm_play_pause_remote();
+                return false;
+            }
+            return true;
         case M_HESCW:
         case M_HESCM:
             if (!record->event.pressed) {
